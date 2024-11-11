@@ -49,3 +49,12 @@
 .search {
     padding: 10px;
 }
+
+.filter{
+    margin: 10px;
+}
+
+.filter-btn:hover{
+    cursor: pointer;
+    border: 1px solid black;
+}
