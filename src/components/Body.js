@@ -1,6 +1,7 @@
 import RestoCard from "./RestoCard";
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 // let restaurant = restaurantData;
 
@@ -27,7 +28,7 @@ const Body = () => {
     if(restaurant.length === 0 || tempRestaurant.length === 0){
         return <Shimmer/>
     }
-    
+
     return (
         <div className='body'>
             <div className='filter'>
@@ -47,7 +48,7 @@ const Body = () => {
                     const filteredList = restaurant.filter((item) => {
                         return item.info.avgRating > 4.5
                     })
-                    setRestaurant(filteredList);
+                    setTempRestaurant(filteredList);
                 }}>
                 Top Rated Restaurants
                 </button>
@@ -55,7 +56,7 @@ const Body = () => {
             <div className='card-container'>
             {
                 tempRestaurant.map((item) => {
-                    return <RestoCard key={item.info.id} resData = {item} />
+                    return <Link className="link" key={item.info.id} to={'/restaurantMenu/'+item.info.id}><RestoCard resData = {item} /></Link>
                 })
             }
             </div>
